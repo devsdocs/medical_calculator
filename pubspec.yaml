@@ -1,17 +1,14 @@
 name: medical_calculator
-description: A starting point for Dart libraries or applications.
+description: Dart package for medical equation calculation
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/devsdocs/medical_calculator
 
 environment:
   sdk: ^3.1.1
 
-# Add regular dependencies here.
 dependencies:
-  fling_units: ^2.2.5
   reusable_tools: ^1.0.13
   super_measurement: ^1.0.4
-  # path: ^1.8.0
 
 dev_dependencies:
   lint: ^2.1.2

@@ -1,20 +1,20 @@
 part of '../../medical_calculator.dart';
 
+/// Convert a [Mass] and [Length] to a [BodyMassIndex].
+///
+/// Example 1:
+/// ```dart
+/// final bmi = BodyMassIndex(weight: Kilograms(60), height: Centimeters(167));
+/// print(bmi);
+/// ```
+///
+/// Example 2:
+/// ```dart
+/// final bmi = BodyMassIndex(weight: Kilograms(60), height: [Foot(5), Inches(60)].toFoot);
+/// print(bmi);
+/// ```
+///
 final class BodyMassIndex extends Equation {
-  /// Convert a [Mass] and [Length] to a [BodyMassIndex].
-  ///
-  /// Example 1:
-  /// ```dart
-  /// final bmi = BodyMassIndex(weight: Kilograms(60), height: Centimeters(167));
-  /// print(bmi);
-  /// ```
-  ///
-  /// Example 2:
-  /// ```dart
-  /// final bmi = BodyMassIndex(weight: Kilograms(60), height: [Foot(5), Inches(60)].toFoot);
-  /// print(bmi);
-  /// ```
-  ///
   factory BodyMassIndex({
     required Mass weight,
     required Length height,

@@ -8,11 +8,11 @@ void main() {
   final bmi = BodyMassIndex(weight: globalWeight, height: globalHeigth);
   print(bmi);
 
-  for (final equation in BodySurfaceAreaEquation.values) {
+  for (final equation in BodySurfaceAreaFormula.values) {
     final bsa = BodySurfaceArea(
       weight: globalWeight,
       height: globalHeigth,
-      equation: equation,
+      formula: equation,
     );
     print('Body Surface Area using ${equation.name} => $bsa');
   }
@@ -24,5 +24,23 @@ void main() {
       gender: gender,
     );
     print('Lean Body Weight in ${gender.name} => $lbw');
+
+    final abw = AdjustedBodyWeight(
+      gender: gender,
+      height: globalHeigth,
+      weight: globalWeight,
+    );
+
+    print('Adjusted Body Weight in ${gender.name} => $abw');
+
+    for (final formula in IdealBodyWeightFormula.values) {
+      final ibw = IdealBodyWeight(
+        gender: gender,
+        height: globalHeigth,
+        formula: formula,
+      );
+
+      print('Ideal Body Weight in ${gender.name} use ${formula.name} => $ibw');
+    }
   }
 }

@@ -1,6 +1,3 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library medical_calculator;
 
 import 'dart:math';
@@ -12,4 +9,6 @@ part 'src/types/gender.dart';
 part 'src/calculator/body_mass_index.dart';
 part 'src/calculator/body_surface_area.dart';
 part 'src/calculator/lean_body_weight.dart';
+part 'src/calculator/adjusted_body_weight.dart';
+part 'src/calculator/ideal_body_weight.dart';
 part 'src/calculator/_abstract.dart';

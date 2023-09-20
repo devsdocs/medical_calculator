@@ -5,7 +5,7 @@ final class BodySurfaceArea extends Equation {
     required Mass weight,
     required Length height,
     Precision decimalPrecision = Precision.two,
-    BodySurfaceAreaEquation equation = BodySurfaceAreaEquation.duBoisAndDuBois,
+    BodySurfaceAreaFormula formula = BodySurfaceAreaFormula.duBoisAndDuBois,
   }) {
     if (weight.value == null) {
       throw ArgumentError.notNull('weight');
@@ -22,35 +22,43 @@ final class BodySurfaceArea extends Equation {
 
     double? internalValue;
 
-    if (equation == BodySurfaceAreaEquation.boyd) {
+    if (formula == BodySurfaceAreaFormula.boyd) {
       internalValue = 0.03330 *
           pow(defaultWeight, 0.6157 - (0.0188 * defaultWeight.log10)) *
           pow(defaultHeight, 0.3);
     }
-    if (equation == BodySurfaceAreaEquation.duBoisAndDuBois) {
+    if (formula == BodySurfaceAreaFormula.duBoisAndDuBois) {
       internalValue =
           pow(defaultWeight, 0.425) * pow(defaultHeight, 0.725) * 0.007184;
     }
-    if (equation == BodySurfaceAreaEquation.gehanAndGeorge) {
+    if (formula == BodySurfaceAreaFormula.gehanAndGeorge) {
       internalValue =
           pow(defaultWeight, 0.51456) * pow(defaultHeight, 0.42246) * 0.0235;
     }
-    if (equation == BodySurfaceAreaEquation.haycock) {
+    if (formula == BodySurfaceAreaFormula.haycock) {
       internalValue =
-          pow(defaultWeight, 0.5378) * pow(defaultHeight, 0.3946) * 0.024265;
+          pow(defaultWeight, 0.5378) * pow(defaultHeight, 0.3964) * 0.024265;
     }
-    if (equation == BodySurfaceAreaEquation.mosteller) {
+    if (formula == BodySurfaceAreaFormula.mosteller) {
       internalValue = sqrt(
         (defaultWeight * defaultHeight) / 3600,
       );
     }
-    if (equation == BodySurfaceAreaEquation.yu) {
+    if (formula == BodySurfaceAreaFormula.yu) {
       internalValue =
           (71.3989 * pow(defaultHeight, 0.7437) * pow(defaultWeight, 0.4040)) /
               10000;
     }
-    if (equation == BodySurfaceAreaEquation.livingston) {
+    if (formula == BodySurfaceAreaFormula.livingston) {
       internalValue = 0.1173 * pow(defaultWeight, 0.6466);
+    }
+    if (formula == BodySurfaceAreaFormula.fujimoto) {
+      internalValue =
+          0.008883 * pow(defaultWeight, 0.444) * pow(defaultHeight, 0.663);
+    }
+    if (formula == BodySurfaceAreaFormula.takahira) {
+      internalValue =
+          0.007241 * pow(defaultWeight, 0.425) * pow(defaultHeight, 0.725);
     }
 
     final valueWithPrecision =
@@ -98,12 +106,14 @@ final class BodySurfaceArea extends Equation {
   String toString() => '$value $symbol';
 }
 
-enum BodySurfaceAreaEquation {
+enum BodySurfaceAreaFormula {
   boyd,
   duBoisAndDuBois,
   gehanAndGeorge,
   haycock,
   mosteller,
   yu,
-  livingston;
+  livingston,
+  fujimoto,
+  takahira;
 }
