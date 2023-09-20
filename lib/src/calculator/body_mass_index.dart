@@ -50,7 +50,6 @@ final class BodyMassIndex extends Equation {
     return BodyMassIndex._(
       valueWithPrecision,
       interpretation: interpretation,
-      notes: "For adults only (18 years and older), using Quetelet's Index",
     );
   }
 
@@ -58,7 +57,8 @@ final class BodyMassIndex extends Equation {
     this._value, {
     String symbol = 'kg/m²',
     String? interpretation,
-    String? notes,
+    String? notes =
+        "For adults only (18 years and older), using Quetelet's Index",
   })  : _interpretation = interpretation,
         _notes = notes,
         _symbol = symbol,
@@ -90,5 +90,5 @@ final class BodyMassIndex extends Equation {
   String? get notes => _notes;
 
   @override
-  String toString() => '$value $symbol: $interpretation; Notes: $notes';
+  String toString() => '$value $symbol';
 }

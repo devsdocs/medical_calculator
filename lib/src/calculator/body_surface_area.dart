@@ -22,18 +22,11 @@ final class BodySurfaceArea extends Equation {
 
     double? internalValue;
 
-    // if (equation == BodySurfaceAreaEquation.boyd) {
-    //   internalValue =
-    //       // 0.0003207
-    //       0.03330 *
-    //           pow(defaultHeight, 0.3) *
-    //           pow(
-    //             // weight.toGrams.value!,
-    //             defaultWeight,
-    //             // 0.7285
-    //             0.6157 - (0.0188 * log(weight.toGrams.value!)),
-    //           );
-    // }
+    if (equation == BodySurfaceAreaEquation.boyd) {
+      internalValue = 0.03330 *
+          pow(defaultWeight, 0.6157 - (0.0188 * defaultWeight.log10)) *
+          pow(defaultHeight, 0.3);
+    }
     if (equation == BodySurfaceAreaEquation.duBoisAndDuBois) {
       internalValue =
           pow(defaultWeight, 0.425) * pow(defaultHeight, 0.725) * 0.007184;
@@ -106,7 +99,7 @@ final class BodySurfaceArea extends Equation {
 }
 
 enum BodySurfaceAreaEquation {
-  // boyd,
+  boyd,
   duBoisAndDuBois,
   gehanAndGeorge,
   haycock,
